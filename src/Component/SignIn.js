@@ -20,7 +20,7 @@ function SignIn() {
                     const loggedInUser = res.data[0];
                     localStorage.setItem('user', JSON.stringify(loggedInUser));
                    
-                    navigate(`/dashboard/${loggedInUser.id}`);
+                    navigate(`/blog`);
                 } else {
                     alert('Username or Password is incorrect');
                 }
@@ -74,11 +74,11 @@ function SignIn() {
                             padding: '10px',
                             borderRadius: '5px',
                             border: 'none',
-                            backgroundColor: '#5a1cd9',
+                            backgroundColor: 'rgb(13 110 253)',
                             color: '#ffffff',
                             fontSize: '16px',
                             cursor: 'pointer',
-                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                            boxShadow: '0 4px 8px rgb(13 110 253)',
                             transition: 'background-color 0.3s'
                         }}
                         onMouseOver={(e) => e.target.style.backgroundColor = '#4a0db7'}

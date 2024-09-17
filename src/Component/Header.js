@@ -3,7 +3,14 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Header() {
-   
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('user'));
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        setIsLoggedIn(false);
+        navigate('/signin'); 
+    };
 
     return (
         <header className="bg-primary py-3">
@@ -14,9 +21,28 @@ function Header() {
                 </Link>
 
                 
-               
+                <nav className="d-flex gap-4">
+                  
+                    <Link to="/about" className="text-decoration-none text-white fs-5">
+                        About
+                    </Link>
+                    <Link to="/contact" className="text-decoration-none text-white fs-5">
+                        Contact
+                    </Link>
+                </nav>
+
               
-               
+                <div>
+                    {isLoggedIn ? (
+                        <button onClick={handleLogout} className="btn btn-light">
+                            Logout
+                        </button>
+                    ) : (
+                        <Link to="/signin" className="btn btn-light">
+                            Login
+                        </Link>
+                    )}
+                </div>
             </div>
         </header>
     );
